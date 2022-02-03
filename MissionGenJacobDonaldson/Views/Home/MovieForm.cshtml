@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Add Movie Form";
+}
+
+@model MissionGenJacobDonaldson.Models.FormResponse;
+
+<!--Movie Form Information-->
+<div class="container">
+    <form method="post">
+        <label asp-for="Title">Title:</label>
+        <input id="Title" asp-for="Title" type="text"  class="form-control" />
+        <br />
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">Select a Category</option>
+            @* Builds out the categories *@
+            @foreach (var item in ViewBag.Category)
+            {
+            <option value="@item.CategoryId">@item.CategoryName</option>
+            }
+        </select>
+        <br />
+        <label asp-for="Year">Year:</label>
+        <input id="Year" asp-for="Year" data- type="number" class="form-control" />
+        <br />
+        <label asp-for="DirectorFirstName">Director First Name:</label>
+        <input id="DirectorFirstName" asp-for="DirectorFirstName" type="text" class="form-control" />
+        <br />
+        <label asp-for="DirectorLastName">Director Last Name:</label>
+        <input id="DirectorLastName" asp-for="DirectorLastName" type="text" class="form-control"/>
+        <br />
+        <label asp-for="Rating">Rating:</label>
+        <select id="Rating" asp-for="Rating" class="form-select">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br />
+        <label asp-for="Edited">Edited:</label>
+        <select id="Edited" asp-for="Edited" class="form-select">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br />
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" type="text" class="form-control" />
+        <br />
+        <label asp-for="Notes">Notes:</label>
+        <textarea asp-for="Notes" rows="2"></textarea>
+        <br />
+        
+        <!--Displays validation requirments if not met-->
+        <input id="btnSend" type="submit" value="Submit" />
+        <div asp-validation-summary="All">
+        </div>
+        <br />
+      
+
+    </form>
+    
+   
+</div>

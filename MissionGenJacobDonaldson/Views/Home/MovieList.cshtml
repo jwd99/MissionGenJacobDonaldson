@@ -1,0 +1,54 @@
+﻿<!--
+    Jacob Donaldson
+    Mission 5
+    Hilton 413
+    2/2/2022
+
+    Lists out movies added and full CRUD functionality
+    -->
+
+@{
+    ViewData["Title"] = "Movie List";
+}
+@model List<FormResponse>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <td>Category</td>
+                <td>Title</td>
+                <td>Year</td>
+                <td>Director's First Name</td>
+                <td>Director's Last Name</td>
+                <td>Rating</td>
+                <td>Edited</td>
+                <td>Lent To</td>
+                <td>Notes</td>
+                <td>Edit</td>
+                <td>Delete</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @* builds out the table rows *@
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Category.CategoryName</td>
+                    <td>@item.Title</td>
+                    <td>@item.Year</td>
+                    <td>@item.DirectorFirstName</td>
+                    <td>@item.DirectorLastName</td>
+                    <td>@item.Rating</td>
+                    <td>@item.Edited</td>
+                    <td>@item.LentTo</td>
+                    <td>@item.Notes</td>
+                    @* Edit and Delete buttons *@
+                    <td><a class="bg-dark" asp-controller="Home" asp-action="Edit" asp-route-MovieId="@item.MovieId">Edit</a></td>
+                    <td><a class="bg-danger" asp-controller="Home" asp-action="Delete" asp-route-MovieId="@item.MovieId">Delete</a></td>
+                    
+                </tr> 
+            }
+            
+        </tbody>
+    </table>

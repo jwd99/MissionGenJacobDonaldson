@@ -1,0 +1,22 @@
+﻿@*
+   IS 413
+    Jacob Donaldson
+    Delete Page
+*@
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+@model FormResponse
+
+
+<div class="card-body">
+    @* confirm deletion before submitting. *@
+    <h5>Confirm Deletion</h5>
+    <p>Are you sure you want to delete @Model.Title</p>
+    <form method="post" asp-action="Delete">
+        <button class="bg-primary" type="submit">Delete</button>
+        @* returns to movie list if you don't want to delete the movie' *@
+        <a asp-controller="Home" asp-action="MovieList">Cancel</a>
+        <input asp-for="MovieId" type="hidden"/>
+    </form>
+</div>
